@@ -5,33 +5,32 @@
   "author": {
     "name": "Carson Schwalm"
   },
+  "engines": {
+    "node": "9.10.0"
+  },
   "license": "MIT",
   "scripts": {
-    "client": "cd client && yarn start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "dev:server": "cd client && yarn build && cd .. && yarn start",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "axios": "^0.18.0",
     "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.0.14",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.0",
+    "nivo": "^0.31.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
     "react-spinners": "^0.3.2",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
-  },
-  "devDependencies": {
-    "concurrently": "^3.6.0",
-    "nodemon": "^1.17.5"
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
+    "serve": "^9.4.0"
   },
   "keywords": [
     "node",
