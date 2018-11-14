@@ -70,6 +70,7 @@ export const fetchSurvey = id => async (dispatch, getState) => {
     dispatch(fetchSuccess(response.data));
   } catch (error) {
     dispatch(fetchError(error));
+    throw error;
   }
 };
 
@@ -87,6 +88,7 @@ export const deleteSurvey = () => async (dispatch, getState) => {
     dispatch(deleteSuccess());
   } catch (error) {
     dispatch(deleteError());
+    throw error;
   }
 };
 
@@ -95,7 +97,10 @@ export const createSurvey = () => async (dispatch, getState) => {
   try {
     const response = await post(
       `${process.env.REACT_APP_API_URL}/api/survey`,
-      getState().manageSurvey,
+      {
+        ...getState().manageSurvey,
+        authorRef: getState().auth._id
+      },
       {
         auth: getState().auth
       }
@@ -103,9 +108,10 @@ export const createSurvey = () => async (dispatch, getState) => {
     if (response.status !== 200) {
       throw new Error("Create Survey Failed");
     }
-    dispatch(createSuccess(response));
+    dispatch(createSuccess());
   } catch (error) {
     dispatch(createError(error));
+    throw error;
   }
 };
 
@@ -126,5 +132,6 @@ export const updateSurvey = () => async (dispatch, getState) => {
     dispatch(updateSuccess());
   } catch (error) {
     dispatch(updateError(error));
+    throw error;
   }
 };

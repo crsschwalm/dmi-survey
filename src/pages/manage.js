@@ -49,8 +49,15 @@ const mapStateToProps = state => ({ manageSurvey: state.manageSurvey });
 const mapDispatchToProps = dispatch => ({
   clearSurvey: () => dispatch(clearSurvey()) && goHome(),
   fetchSurvey: id => dispatch(fetchSurvey(id)),
-  updateSurvey: () => dispatch(updateSurvey()) && goHome(),
-  deleteSurvey: () => getConfirmation() && dispatch(deleteSurvey()) && goHome()
+  updateSurvey: () =>
+    dispatch(updateSurvey())
+      .then(() => goHome())
+      .catch(console.error),
+  deleteSurvey: () =>
+    getConfirmation() &&
+    dispatch(deleteSurvey())
+      .then(() => goHome())
+      .catch(console.error)
 });
 
 const goHome = () => window.location.replace("/");
