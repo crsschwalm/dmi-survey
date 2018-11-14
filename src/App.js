@@ -9,6 +9,7 @@ import Create from "./pages/create";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import NotFound from "./pages/notFound";
+import Responses from "./pages/Responses";
 
 const Routes = () => (
   <Router>
@@ -17,6 +18,7 @@ const Routes = () => (
         <AuthRoute exact path="/" component={Home} />
         <AuthRoute exact path="/survey/take/:surveyId" component={Take} />
         <AuthRoute exact path="/survey/manage/:surveyId" component={Manage} />
+        <AuthRoute exact path="/responses/:surveyId" component={Responses} />
         <AuthRoute exact path="/create" component={Create} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />

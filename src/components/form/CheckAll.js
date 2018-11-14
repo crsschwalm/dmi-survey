@@ -21,13 +21,19 @@ export default class CheckAll extends Component {
 
   render() {
     return (
-      <div className="field ">
-        <label className="label">{this.props.label}</label>
-        <div className="control is-grouped is-grouped-multiline">
-          <CheckBoxes
-            options={this.props.options}
-            onChange={this.handleCheck}
-          />
+      <div className="field is-horizontal">
+        <div className="field-label is-normal">
+          <label className="label">{this.props.label}</label>
+        </div>
+        <div className="field-body">
+          <div className="field">
+            <div className="control">
+              <CheckBoxes
+                options={this.props.options}
+                onChange={this.handleCheck}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

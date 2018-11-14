@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./index.css";
 import SurveyCard from "../components/SurveyCard";
 import AsyncList from "../components/AsyncList";
@@ -22,7 +22,33 @@ const Home = ({ user }) => (
             <Loading />
           ) : (
             list.map((survey, index) => (
-              <SurveyCard key={index} survey={survey} />
+              <SurveyCard
+                key={index}
+                survey={survey}
+                renderOptions={survey => (
+                  <Fragment>
+                    {" "}
+                    <a
+                      href={`/survey/take/${survey._id}`}
+                      className="button is-link is-medium level-item"
+                    >
+                      Take Survey
+                    </a>
+                    <a
+                      href={`/survey/manage/${survey._id}`}
+                      className="button is-warning is-medium level-item"
+                    >
+                      Manage Survey
+                    </a>
+                    <a
+                      href={`/responses/${survey._id}`}
+                      className="button is-primary is-medium level-item"
+                    >
+                      View Responses
+                    </a>
+                  </Fragment>
+                )}
+              />
             ))
           )}
       />

@@ -40,8 +40,8 @@ export default class Header extends Component {
               <NavLink className="navbar-item" to="/create">
                 Create New
               </NavLink>
-              <NavLink className="navbar-item" to="/">
-                Results
+              <NavLink className="navbar-item" to="/responses">
+                Responses
               </NavLink>
               <Logout>Logout</Logout>
             </div>

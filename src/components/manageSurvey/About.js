@@ -12,7 +12,7 @@ const About = ({
   manageSurvey: { name, description, authorRef }
 }) => (
   <Fragment>
-    <ReadOnly label="Author" value={authorRef || user.username} />
+    <ReadOnly label="Author" value={authorRef || user._id} />
     <Input
       label="Survey Name"
       value={name}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const SurveyCard = ({ survey }) => (
+const SurveyCard = ({ survey, renderOptions }) => (
   <div className="box">
     <article className="media">
       <div className="media-left">
@@ -19,22 +19,7 @@ const SurveyCard = ({ survey }) => (
           </p>
         </div>
         <nav className="level is-mobile">
-          <div className="level-left">
-            <a
-              href={`/survey/take/${survey._id}`}
-              className="button is-link is-medium level-item"
-            >
-              Take Survey
-            </a>
-          </div>
-          <div className="level-right">
-            <a
-              href={`/survey/manage/${survey._id}`}
-              className="button is-warning is-medium level-item"
-            >
-              Manage Survey
-            </a>
-          </div>
+          <div className="level-left">{renderOptions(survey)}</div>
         </nav>
       </div>
     </article>
