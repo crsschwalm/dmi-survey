@@ -23,7 +23,10 @@ const TakeSurvey = ({
 const mapStateToProps = state => ({ takeSurvey: state.takeSurvey });
 
 const mapDispatchToProps = dispatch => ({
-  submitResponse: () => dispatch(submitResponse()) && goHome(),
+  submitResponse: () =>
+    dispatch(submitResponse())
+      .then(() => goHome())
+      .catch(console.error),
   handleCancel: () =>
     getConfirmation() && dispatch(clearResponses()) && goHome()
 });
